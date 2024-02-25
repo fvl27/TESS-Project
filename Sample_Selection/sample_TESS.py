@@ -21,7 +21,9 @@ cat = pd.read_csv(filename, index_col='pl_name', header=0, comment='#')
 cond = (cat['sy_pnum'] > 1) & (cat['discoverymethod']== 'Radial Velocity') & (cat['pl_orbper'] < 30) & (cat['pl_rade'].isnull()) & (cat['pl_bmasse'] < 20)
 
 cc = cat.loc[cond]
-cc.to_csv("/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/Data/Sample.csv")
+
+sample_file = data_path / "Sample.csv"
+cc.to_csv(sample_file)
 
 # Second part! Check for TESS data using Lightkurve - Python package for Kepler and TESS data analysis
 # (Lightkurve Collaboration et al. 2018).
@@ -69,5 +71,5 @@ cond2 = (cat2['sectors'] != '[]')
 cc2 = cat2.loc[cond2]
 
 # Save CSV
-sample_file = data_path / "Tess_Sample.csv"
-cc2.to_csv(sample_file)
+Tess_file = data_path / "Tess_Sample.csv"
+cc2.to_csv(Tess_file)
