@@ -5,12 +5,17 @@
 
 import pandas as pd
 import numpy as np
+import os
+import pathlib
 
 # Read exoplanet.eu catalog
 
-filename = "/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/Data/planets2020.csv"
+path = os.path.abspath(os.path.dirname(__file__))
 
-# filename2 = "/home/flavia/Documentos/TESS/pandas-EXO/Prisample2020.csv"
+data_path = pathlib.Path(path) / "Data"
+
+filename = data_path / "planets2020.csv"
+
 cat = pd.read_csv(filename, index_col='pl_name', header=0, comment='#')
 
 cond = (cat['sy_pnum'] > 1) & (cat['discoverymethod']== 'Radial Velocity') & (cat['pl_orbper'] < 30) & (cat['pl_rade'].isnull()) & (cat['pl_bmasse'] < 20)
@@ -24,7 +29,7 @@ cc.to_csv("/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Docume
 
 import lightkurve as lk
 
-filename2 = "/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/Data/Sample.csv"
+filename2 = data_path /"Sample.csv"
 
 cat2 = pd.read_csv(filename2, index_col='pl_name', header=0, comment='#')
 
@@ -60,11 +65,9 @@ for i, planet in enumerate(cat2.index):
     # Add star to already searched
     already_searched.append(star)
 
-# cat2=cat2[['pl_hostname','pl_letter','pl_orbper','pl_orbsmax','pl_orbeccen','pl_orbtper','pl_orblper','sectors']]
-
 cond2 = (cat2['sectors'] != '[]')
 cc2 = cat2.loc[cond2]
 
 # Save CSV
-cc2.to_csv("/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/Data/Tess_Sample.csv"
-)
+sample_file = data_path / "Tess_Sample.csv"
+cc2.to_csv(sample_file)
