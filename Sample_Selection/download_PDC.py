@@ -12,9 +12,14 @@ from astropy.io import fits
 from lightkurve import search_lightcurve
 from lightkurve import correctors
 from astropy.timeseries import BoxLeastSquares
+import os
+import pathlib
 
-filepath = "/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/PDC/"
-filename = "/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/Data/Tess_Sample.csv"
+path = os.path.abspath(os.path.dirname(__file__))
+
+data_path = pathlib.Path(path) / "Data"
+
+filename = data_path / "Tess_Sample.csv"
 
 sample = pd.read_csv(filename,index_col='pl_name', header=0, comment='#')
 
@@ -111,6 +116,9 @@ for i, planet in enumerate(planets):
     plt.legend(loc='upper right');
     plt.show()
 
-    np.savetxt(filepath+star+'_pdc_lc.txt',np.array([lc.time.value,lc.flux.value,lc.flux_err.value]).T, delimiter=" ")
+
+    pdc_path = pathlib.Path(path) / "Data/PDC"
+
+    np.savetxt(pdc_path+star+'_pdc_lc.txt',np.array([lc.time.value,lc.flux.value,lc.flux_err.value]).T, delimiter=" ")
 # Save CSV
-sample.to_csv("/media/flavia/35744470-866d-4558-a059-cb47f71de7e3/home/flavia/Documentos/TESS/pandas-EXO/Git-hub/Data/Tess_Sample.csv")
+sample.to_csv(filename)
