@@ -29,11 +29,11 @@ sample.loc[:, 'MAX_D'] = None
 sample.loc[:, 'MAX_I'] = None
 
 
-# To analize planets in the table
+# To analize planets in the table. Uncomment line 34 and Comment lines 38 and 39.
 
 # for i, planet in enumerate(sample.index):
 
-# To analize a particular object we can create a list. Comment line 29 and uncomment lines 33 an 34
+# To analize a particular object we can create a list. Comment line 34 and uncomment lines 38 an 39.
 
 planets= ['61 Vir b']
 for i, planet in enumerate(planets):
@@ -62,9 +62,10 @@ for i, planet in enumerate(planets):
 
         N_fr = lcfs[j].num_frm
         print('frames number ', N_fr, ', tic', tic)
-
-        #Selects data with the right cadence and removes repited data from TIC number and frames number
-        if  N_fr == 60 and tic == sample.loc[planet,'tic_id']:
+        ticname = 'TIC '+ str(tic)
+        
+        #Selects data with the right cadence moves repited data from TIC number and frames number
+        if  N_fr == 60 and sample.loc[planet,'tic_id'] == 'TIC '+ str(tic):
             print(sector)
             cadence = 2
             #concatenates all the observed sectors for each star
@@ -92,7 +93,6 @@ for i, planet in enumerate(planets):
                     r = sector
                     maxI = d
                     sample.loc[planet, 'MAX_I'] = maxI
-                    #MAX = maxI
                     d = max
                     print('sector ', r, ' con máximo intermedio de sectores anteriores ' ,maxI , ' y ', d, 'días del sector.')
                     print('maxI', maxI)
@@ -107,11 +107,11 @@ for i, planet in enumerate(planets):
 
 
     star = star.replace(' ','')
-    lc = lc.remove_nans().remove_outliers(sigma_lower=5, sigma_upper= 3)
+    lc = lc.remove_nans()
     maxT = lc.time[-1]-lc.time[0]
     deltaT=lc.time.shape
     cadenceT = maxT/deltaT*1440
-    print('TIC', sample.loc[planet,'TIC'] ,'numero de datos TOTAL', deltaT)
+    print('TIC', sample.loc[planet,'tic_id'] ,'numero de datos TOTAL', deltaT)
     plt.plot(lc.time.value, lc.flux.value,linestyle='none', marker='.', label= star, color='orange')
     plt.legend(loc='upper right');
     plt.show()
