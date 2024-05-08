@@ -1,10 +1,11 @@
 # TESS Project
 
-<p align="center">
+
+<!--<p align="center">
 <img src="https://github.com/Gaiana/nirdust/blob/main/docs/source/_static/logo.png?raw=true" alt="logo" height="200"/>
 </p>
 
-<!--[![PyPi Version](https://badge.fury.io/py/nirdust.svg)](https://badge.fury.io/py/nirdust)
+[![PyPi Version](https://badge.fury.io/py/nirdust.svg)](https://badge.fury.io/py/nirdust)
 [![Nirdust](https://github.com/Gaiana/nirdust/actions/workflows/nirdust_ci.yml/badge.svg)](https://github.com/Gaiana/nirdust/actions/workflows/nirdust_ci.yml)
 [![https://github.com/leliel12/diseno_sci_sfw](https://img.shields.io/badge/DiSoftCompCi-FAMAF-ffda00)](https://github.com/leliel12/diseno_sci_sfw)
 [![Documentation Status](https://readthedocs.org/projects/nirdust/badge/?version=latest)](https://nirdust.readthedocs.io/en/latest/?badge=latest)
