@@ -15,14 +15,20 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2401.01888-b31b1b.svg)](https://arxiv.org/abs/2401.01888) 
 
 This project is a summary of many codes made for my postdoctoral research in Astrophysics on transiting exoplanets.
-Implementing many techniques such as a lot of data extraction and downloading. In this programme we use CVS tables from the Exoplanet data base and photometric data from the TESS satellite observatory. We filtered the important information we needed in exoplanets tables. We select in detail the photometric data with specific carefully in duplicated lightcurves, and checking the cadence needed.
-After the data were correctly cured, we started with the photometric analysis using the Box-Least-Square algorithm for looking for periodic signals in two different stages. We also performed a teorical modeling of light curves to compare
+Implementing many techniques such as a lot of data extraction and downloading. In this programme we use CVS tables from the Exoplanet data base and photometric data from the TESS satellite observatory. We filtered the important information we needed in the exoplanet tables. We select in detail the photometric data with specific carefully in not include duplicated light curves, and checking the cadence needed.
+After the data were correctly cured, we started with the photometric analysis using the Box-Least-Square algorithm, looking for periodic signals in two different stages, for known RV (Radial Velocity) planets and for new planets. We also performed a theoritical modelling of light curves to compare with the observational data corresponding to the knonw planets.
 
 ## Motivation:
-
+The motivation of this work was to search for transit signals of known RV (Radial Velocity) planets using TESS data focusing on low-mass planets with sizes smaller than Neptune. Additionally, to achieve high geometric transit probabilities, we aplied some conditioms to filter the selected data.
+The detection of exoplanets by means of both transits and RVs is of importance because this allows the characterization of their bulk densities and internal compositions.
 
 ## Features
-The research was performed in two stages, first we loo
+
+The research was performed in two stages, first we looked for transits signals sing BLS algorithm , and then we performed transit models from literature parameters and using an analytical relationships between
+masses and radii for three different compositions (Fortney et al., 2007b,a).
+
+
+
 
 Footnote: the hot dust component may or may not be present in your type 2 
 nuclei, do not get disappointed if NIRDust finds nothing.
@@ -32,20 +38,7 @@ nuclei, do not get disappointed if NIRDust finds nothing.
 
 You will need Python 3.8 or higher to run NIRDust.
 
-## Installation
 
-You can install the least stable version of NIRDust from pip:
-
-
-``` python
-$ pip install nirdust
-```
-
-Or, for the develovepment instalation clone this repository and then inside the local directory execute
-
-``` python
-$ pip install -e .
-```
 
 ## Citation
 
