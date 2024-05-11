@@ -3,16 +3,11 @@
 
 <!--<p align="center">
 <img src="https://github.com/Gaiana/nirdust/blob/main/docs/source/_static/logo.png?raw=true" alt="logo" height="200"/>
-</p>
+</p>-->
 
-[![PyPi Version](https://badge.fury.io/py/nirdust.svg)](https://badge.fury.io/py/nirdust)
-[![Nirdust](https://github.com/Gaiana/nirdust/actions/workflows/nirdust_ci.yml/badge.svg)](https://github.com/Gaiana/nirdust/actions/workflows/nirdust_ci.yml)
-[![https://github.com/leliel12/diseno_sci_sfw](https://img.shields.io/badge/DiSoftCompCi-FAMAF-ffda00)](https://github.com/leliel12/diseno_sci_sfw)
-[![Documentation Status](https://readthedocs.org/projects/nirdust/badge/?version=latest)](https://nirdust.readthedocs.io/en/latest/?badge=latest)
-[![Coverage Status](https://coveralls.io/repos/github/Gaiana/nirdust/badge.svg?branch=main)](https://coveralls.io/github/Gaiana/nirdust?branch=main)
+[![TESS Data](https://github.com/fvl27/TESS-Project/blob/main/figuras-tessproject/dataset_tess.svg)](https://exoplanetarchive.ipac.caltech.edu/) 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-370/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![arXiv](https://img.shields.io/badge/arXiv-2401.01888-b31b1b.svg)](https://arxiv.org/abs/2401.01888) 
+[![arXiv](https://img.shields.io/badge/arXiv-2401.01888-b31b1b.svg)](https://arxiv.org/abs/2207.12498) 
 
 This project is a summary of many codes made for my postdoctoral research in Astrophysics on transiting exoplanets.
 Implementing many techniques such as a lot of data extraction and downloading. In this programme we use CVS tables from the Exoplanet data base and photometric data from the TESS satellite observatory. We filtered the important information we needed in the exoplanet tables. We select in detail the photometric data with specific carefully in not include duplicated light curves, and checking the cadence needed.
@@ -27,7 +22,7 @@ The detection of exoplanets by means of both transits and RVs is of importance b
 The research was performed in two stages, first we looked for transits signals sing BLS algorithm , and then we performed transit models from literature parameters and using an analytical relationships between
 masses and radii for three different compositions (Fortney et al., 2007b,a).
 
-
+<!--
 
 
 Footnote: the hot dust component may or may not be present in your type 2 
@@ -63,10 +58,11 @@ If you use *NIRDust* in a scientific publication, we would appreciate citations 
     doi = {10.1093/mnras/stae008},
     url = {https://doi.org/10.1093/mnras/stae008},
     eprint = {https://academic.oup.com/mnras/article-pdf/528/2/2952/56541590/stae008.pdf},
-}
+} 
 ```
-
-Full-text: [https://arxiv.org/abs/1912.09585](https://arxiv.org/abs/2401.01888)
-
 -->
+Full-text: 
+See [A&A 665, A157 (2022)] (https://www.aanda.org/articles/aa/pdf/2022/09/aa43763-22.pdf), 
+or see [arXiv: astro-ph: arXiv:2207.12498] (https://arxiv.org/abs/2207.12498)
+
 
