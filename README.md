@@ -3,9 +3,9 @@
 
 <!--<p align="center">
 <img src="https://github.com/Gaiana/nirdust/blob/main/docs/source/_static/logo.png?raw=true" alt="logo" height="200"/>
-</p>-->
+</p>
 
-[![TESS Data](https://github.com/fvl27/TESS-Project/blob/main/figuras-tessproject/dataset_tess.svg)](https://exoplanetarchive.ipac.caltech.edu/) 
+[![TESS Data](https://github.com/fvl27/TESS-Project/blob/main/figuras-tessproject/dataset_tess.svg)](https://exoplanetarchive.ipac.caltech.edu/) -->
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![arXiv](https://img.shields.io/badge/arXiv-2401.01888-b31b1b.svg)](https://arxiv.org/abs/2207.12498) 
 
