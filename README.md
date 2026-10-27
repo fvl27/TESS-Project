@@ -21,6 +21,15 @@ The workflow brings together astronomical catalogue filtering, photometric data 
 
 * Support the scientific interpretation of potential exoplanet detections.
 
+
+## Workflow
+
+1. **Select a target sample.** Filter a planetary catalogue using scientific criteria, including multiplicity, discovery method, orbital period, and available mass/radius information.
+2. **Retrieve TESS photometry.** Use [Lightkurve](https://lightkurve.github.io/) to find and download light curves, including PDCSAP flux products where available.
+3. **Prepare the light curves.** Inspect the observations and prepare the data for the transit search. The scripts include filtering and smoothing operations.
+4. **Search for transit signals.** Use the Box Least Squares (BLS) algorithm to look for periodic transit-like signals. The repository contains both a global search and a search focused around known orbital periods.
+5. **Visualize and interpret results.** Plot light curves and compare candidate signals with known-planet information and theoretical expectations.
+
 ## Skills Demonstrated
 
 * Python programming for scientific data analysis
@@ -35,14 +44,6 @@ The workflow brings together astronomical catalogue filtering, photometric data 
 
 * Working with large astronomical datasets
 
-
-## Workflow
-
-1. **Select a target sample.** Filter a planetary catalogue using scientific criteria, including multiplicity, discovery method, orbital period, and available mass/radius information.
-2. **Retrieve TESS photometry.** Use [Lightkurve](https://lightkurve.github.io/) to find and download light curves, including PDCSAP flux products where available.
-3. **Prepare the light curves.** Inspect the observations and prepare the data for the transit search. The scripts include filtering and smoothing operations.
-4. **Search for transit signals.** Use the Box Least Squares (BLS) algorithm to look for periodic transit-like signals. The repository contains both a global search and a search focused around known orbital periods.
-5. **Visualize and interpret results.** Plot light curves and compare candidate signals with known-planet information and theoretical expectations.
 
 ## Repository structure
 
