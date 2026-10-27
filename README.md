@@ -8,6 +8,34 @@ The project explores whether planets discovered through the radial-velocity meth
 
 The workflow brings together astronomical catalogue filtering, photometric data retrieval, light-curve preparation, periodic-signal searches, and comparison with known-planet transit models.
 
+
+## Objectives
+
+* Retrieve and organize exoplanet catalogues and TESS photometric data.
+
+* Filter datasets according to scientific criteria and observational requirements.
+
+* Identify periodic transit signals using the Box Least Squares (BLS) algorithm.
+
+* Model transit light curves and compare the results with observational data.
+
+* Support the scientific interpretation of potential exoplanet detections.
+
+## Skills Demonstrated
+
+* Python programming for scientific data analysis
+
+* Data extraction, cleaning, and preparation
+
+* Time-series analysis and periodic signal detection
+
+* Statistical and computational methods
+
+* Data visualization and scientific interpretation
+
+* Working with large astronomical datasets
+
+
 ## Workflow
 
 1. **Select a target sample.** Filter a planetary catalogue using scientific criteria, including multiplicity, discovery method, orbital period, and available mass/radius information.
