@@ -1,87 +1,96 @@
 # TESS Data Analysis: Exoplanet Transit Detection
 
+A Python-based research project for selecting planetary systems, retrieving **TESS** photometry, and searching for transit signals in systems with known radial-velocity planets. The repository contains data-selection and light-curve analysis scripts, example data tables, and figures from the research workflow.
 
+## Overview
 
-<!--<p align="center">
-<img src="https://github.com/Gaiana/nirdust/blob/main/docs/source/_static/logo.png?raw=true" alt="logo" height="200"/>
-</p>
+The project explores whether planets discovered through the radial-velocity method may also produce detectable transits in TESS observations. Transit and radial-velocity measurements can complement one another and help constrain planetary properties.
 
-[![TESS Data](https://github.com/fvl27/TESS-Project/blob/main/figuras-tessproject/dataset_tess.svg)](https://exoplanetarchive.ipac.caltech.edu/) -->
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-370/)
-[![arXiv](https://img.shields.io/badge/arXiv-2401.01888-b31b1b.svg)](https://arxiv.org/abs/2207.12498) 
+The workflow brings together astronomical catalogue filtering, photometric data retrieval, light-curve preparation, periodic-signal searches, and comparison with known-planet transit models.
 
-## Project Overview
+## Workflow
 
-This project presents data analysis workflows developed during my postdoctoral research in astrophysics, focused on the detection and characterization of transiting exoplanets using data from NASA's Transiting Exoplanet Survey Satellite (TESS).
+1. **Select a target sample.** Filter a planetary catalogue using scientific criteria, including multiplicity, discovery method, orbital period, and available mass/radius information.
+2. **Retrieve TESS photometry.** Use [Lightkurve](https://lightkurve.github.io/) to find and download light curves, including PDCSAP flux products where available.
+3. **Prepare the light curves.** Inspect the observations and prepare the data for the transit search. The scripts include filtering and smoothing operations.
+4. **Search for transit signals.** Use the Box Least Squares (BLS) algorithm to look for periodic transit-like signals. The repository contains both a global search and a search focused around known orbital periods.
+5. **Visualize and interpret results.** Plot light curves and compare candidate signals with known-planet information and theoretical expectations.
 
-The project combines data extraction, data cleaning, sample selection, time-series analysis, and light-curve modeling to investigate transit signals from known radial-velocity planets and identify potential new candidates.
+## Repository structure
 
-This project is a summary of many codes made for my postdoctoral research in Astrophysics on transiting exoplanets.
-Implementing many techniques such as a lot of data extraction and downloading. In this programme we use CVS tables from the Exoplanet data base and photometric data from the TESS satellite observatory. We filtered the important information we needed in the exoplanet tables. We select in detail the photometric data with specific carefully in not include duplicated light curves, and checking the cadence needed.
-After the data were correctly cured, we started with the photometric analysis using the Box-Least-Square algorithm, looking for periodic signals in two different stages, for known RV (Radial Velocity) planets and for new planets. We also performed a theoritical modelling of light curves to compare with the observational data corresponding to the knonw planets.
+```text
+TESS-Project-main/
+├── README.md
+├── Scripts/
+│   ├── sample_TESS.py          # Select a sample from a planetary catalogue
+│   ├── download_PDC.py         # Retrieve TESS PDCSAP light curves
+│   ├── null_PDCSAP_global.py   # Global BLS search
+│   └── null_PDCSAP_local.py    # BLS search near known periods
+├── Sample_Selection/
+│   ├── Data/
+│   │   ├── Sample.csv
+│   │   ├── Tess_Sample.csv
+│   │   ├── short_table_prueba.csv
+│   │   └── PDC/                # Example light-curve data
+│   └── Figures/                # Selected figures and figure notes
+└── figuras-tessproject/        # Project and dataset illustrations
+```
 
-## Motivation:
-The motivation of this work was to search for transit signals of known RV (Radial Velocity) planets using TESS data focusing on low-mass planets with sizes smaller than Neptune. Additionally, to achieve high geometric transit probabilities, we aplied some conditioms to filter the selected data.
-The detection of exoplanets by means of both transits and RVs is of importance because this allows the characterization of their bulk densities and internal compositions.
+## Requirements
 
-## Objectives
+The scripts use Python and scientific-astronomy libraries, including:
 
-* Retrieve and organize exoplanet catalogues and TESS photometric data.
+- [NumPy](https://numpy.org/)
+- [pandas](https://pandas.pydata.org/)
+- [Matplotlib](https://matplotlib.org/)
+- [Astropy](https://www.astropy.org/)
+- [Lightkurve](https://lightkurve.github.io/)
+- [SciPy](https://scipy.org/) (signal-processing and interpolation utilities used by the BLS scripts)
 
-* Filter datasets according to scientific criteria and observational requirements.
+A virtual environment is recommended to keep dependencies isolated. For example:
 
-* Identify periodic transit signals using the Box Least Squares (BLS) algorithm.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate        # Linux/macOS
+python -m pip install --upgrade pip
+python -m pip install numpy pandas matplotlib astropy lightkurve scipy
+```
 
-* Model transit light curves and compare the results with observational data.
+> **Compatibility note:** Some scripts use older Lightkurve interfaces. Depending on the installed package versions, these imports or calls may need updating. The repository does not currently include a pinned dependency file, so the commands above install current releases rather than guaranteeing an identical historical environment.
 
-* Support the scientific interpretation of potential exoplanet detections.
+## Running the scripts
 
-## Methodology
+Run scripts from the repository root, for example:
 
-1. Data collection: Retrieve exoplanet catalogue information and TESS photometric observations.
+```bash
+python Scripts/sample_TESS.py
+python Scripts/download_PDC.py
+python Scripts/null_PDCSAP_global.py
+python Scripts/null_PDCSAP_local.py
+```
 
-2. Data cleaning and preparation: Apply selection criteria, check observational cadence, and exclude duplicated light curves.
+**Data-path note:** the scripts build their data paths relative to the `Scripts/` directory and expect a `Scripts/Data/` directory. In the repository as currently organized, the supplied CSV files are under `Sample_Selection/Data/`. Before running the scripts, either adjust the `data_path` definitions in the scripts or place/copy the required input files in the expected location.
 
-3. Exploratory and time-series analysis: Search for periodic transit signals using the BLS algorithm.
+The sample-selection script also expects a catalogue named `planets2020.csv`, which is not included in the repository snapshot. Obtain the appropriate catalogue and place it in the expected data directory before running that step. The scripts may download observations from MAST through Lightkurve, so internet access is required for retrieval.
 
-4. Light-curve modeling: Compare observational data with theoretical transit models and parameters from the literature.
+## Data and reproducibility
 
-5. Scientific interpretation: Evaluate the results in the context of exoplanet detection and characterization.
+- CSV files in `Sample_Selection/Data/` contain sample tables used or generated during the analysis.
+- `Sample_Selection/Data/PDC/` includes an example photometric light-curve file.
+- The scripts write derived parameters and tables as part of their processing. Check each script's input and output paths before running it to avoid overwriting existing files.
+- The example files are not necessarily a complete reproduction package for every stage of the original analysis.
 
-## Skills Demonstrated
+## Publication
 
-* Python programming for scientific data analysis
+This repository is related to the following publication:
 
-* Data extraction, cleaning, and preparation
+**Astronomy & Astrophysics, 665, A157 (2022).**
 
-* Time-series analysis and periodic signal detection
+- [Published article (A&A)](https://www.aanda.org/articles/aa/pdf/2022/09/aa43763-22.pdf)
+- [Preprint on arXiv:2207.12498](https://arxiv.org/abs/2207.12498)
 
-* Statistical and computational methods
+Please consult the paper for the scientific context, selection criteria, and interpretation of the results.
 
-* Data visualization and scientific interpretation
+## Acknowledgements
 
-* Working with large astronomical datasets
-
-## Research Publication
-
-This work is related to the following peer-reviewed publication:
-
-Astronomy & Astrophysics, 665, A157 (2022)
-
-Preprint: arXiv:2207.12498
-
-## Repository Structure
-
-Sample_Selection/: Scripts related to sample selection and data preparation.
-
-figuras-tessproject/: Project figures and visualizations.
-
-For details about the implementation, please refer to the code and notebooks included in the repository.
-
-
-
-Full-text: 
-See [A&A 665, A157 (2022)] (https://www.aanda.org/articles/aa/pdf/2022/09/aa43763-22.pdf), 
-or see [arXiv: astro-ph: arXiv:2207.12498] (https://arxiv.org/abs/2207.12498)
-
-
+This project uses data from NASA's Transiting Exoplanet Survey Satellite (TESS) and the Python astronomy ecosystem, including Lightkurve and Astropy. Please cite the relevant software and data sources when using them in research.
